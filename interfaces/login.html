@@ -1,0 +1,38 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio de Sesión | Sistema Guía Académico ESIS</title>
+    <link rel="stylesheet" href="estilo.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+
+<body>
+    <header>ESTA ES LA CABECERA DE LA PAGINA</header>
+    <div id="cabecera">
+
+    </div>
+
+    <div id="login" class="container">
+        <div id="login-formulario" class="row">
+            <form action="controller/usuario_controller.php" method="POST">
+                <div id="login-icono">
+                    <img src="https://png.pngtree.com/png-vector/20191110/ourlarge/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg"
+                        width="200px" height="200px">
+                </div>
+                <h4 id="login-titulo">Inicio de Sesión</h4>
+                <div class="login-entrada">
+                    <label for="login-usuario">Usuario:</label>
+                    <input id="login-usuario" class="login-txt" name="usuario" type="text" placeholder="Usuario"
+                        required>
+                </div>
+                <div class="login-entrada">
+                    <label for="login-contrasenia">Contraseña:</label>
+                    <input id="login-contra" class="login-txt" name="contra" type="password" placeholder="Contraseña"
+                        required>
+                </div>
+                <input type="submit" name="iniciar-sesion">
+            </form>
+        </div>
+    </div>
