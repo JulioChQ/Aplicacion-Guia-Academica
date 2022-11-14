@@ -9,30 +9,39 @@
 </head>
 
 <body>
-    <header>ESTA ES LA CABECERA DE LA PAGINA</header>
-    <div id="cabecera">
+    <header>
+        <div class="container text-center" id="cabecera">
+            APLICACIÓN GUÍA ACADÉMICA
+        </div>
+    </header>
 
-    </div>
 
-    <div id="login" class="container">
+    <div id="login" class="container text-center">
         <div id="login-formulario" class="row">
-            <form action="controller/usuario_controller.php" method="POST">
-                <div id="login-icono">
-                    <img src="https://png.pngtree.com/png-vector/20191110/ourlarge/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg"
-                        width="200px" height="200px">
-                </div>
-                <h4 id="login-titulo">Inicio de Sesión</h4>
-                <div class="login-entrada">
-                    <label for="login-usuario">Usuario:</label>
-                    <input id="login-usuario" class="login-txt" name="usuario" type="text" placeholder="Usuario"
-                        required>
-                </div>
-                <div class="login-entrada">
-                    <label for="login-contrasenia">Contraseña:</label>
-                    <input id="login-contra" class="login-txt" name="contra" type="password" placeholder="Contraseña"
-                        required>
-                </div>
-                <input type="submit" name="iniciar-sesion">
-            </form>
+            <div class="col">
+                <form action="controller/usuario_controller.php" method="POST">
+                    <div id="login-icono">
+                        <img src="" width="200px" height="200px">
+
+
+                    </div>
+                    <h4 id="login-titulo">Inicio de Sesión</h4>
+                    <div class="login-entrada">
+                        <label for="login-usuario">Usuario:</label><br>
+                        <input id="login-usuario" class="login-txt" name="usuario" type="text" placeholder="Usuario"
+                            required>
+                    </div>
+                    <div class="login-entrada">
+                        <label for="login-contrasenia">Contraseña:</label><br>
+                        <input id="login-contra" class="login-txt" name="contra" type="password"
+                            placeholder="Contraseña" required>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="recordar-usuario">
+                        <label for="recordar-usuario">Recordar Usuario</label>
+                    </div>
+                    <input class="btn btn-primary" type="submit" name="iniciar-sesion">
+                </form>
+            </div>
         </div>
     </div>
