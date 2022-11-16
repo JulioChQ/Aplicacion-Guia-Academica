@@ -1,7 +1,20 @@
-header{
-    background-color: royalblue;
+.navbar {
+    padding: 2rem;
+    background-color: #f5f6f7;
 }
 
-header{
-    color: white;
+.navbar-collapse {
+    align-items: center;
+    justify-content: space-between;
+}
+
+#cabecera-login{
+    font-size: 80%;
+}
+
+/* Adaptable Responsivo */
+@media screen and (max-width: 767px) {
+    .navbar-brand {
+        display: none;
+    }
 }
