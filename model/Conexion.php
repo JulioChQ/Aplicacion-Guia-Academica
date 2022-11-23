@@ -10,7 +10,7 @@
  *
  * @author USUARIO
  */
-require '../model/config.php';
+
 
 class Conexion {
     public static function conectar() {

@@ -1,39 +1,47 @@
-<!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this template
--->
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Inicio de Sesión | Sistema Guía Académico ESIS</title>
-    </head>
-    <body>
-        
-        <div id="cabecera">
-            
-        </div>
 
-        <div id="login">
-            <div id="login-formulario">
-                <form action="controller/usuario_controller.php" method="POST">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio de Sesión | Sistema Guía Académico ESIS</title>
+    <link rel="stylesheet" href="estilo.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+        <div class="navbar align-items-center justify-content-center" id="cabecera-login">
+            APLICACIÓN GUÍA ACADÉMICA
+        </div>
+    </header>
+
+
+    <div id="login" class="container-md text-center">
+        <div id="login-formulario" class="row">
+
+            <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST">
+                <div class="form-group">
                     <div id="login-icono">
-                        <img src="https://png.pngtree.com/png-vector/20191110/ourlarge/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg" width="200px" height="200px">
+                        <img src="view/img/person-circle.svg" alt="mdo" width="200" height="200" class="rounded-circle">
                     </div>
                     <h4 id="login-titulo">Inicio de Sesión</h4>
                     <div class="login-entrada">
-                        <label for="login-usuario">Usuario:</label>
+                        <label for="login-usuario">Usuario:</label><br>
                         <input id="login-usuario" class="login-txt" name="usuario" type="text" placeholder="Usuario" required>
                     </div>
                     <div class="login-entrada">
-                        <label for="login-contrasenia">Contraseña:</label>
+                        <label for="login-contrasenia">Contraseña:</label><br>
                         <input id="login-contra" class="login-txt" name="contra" type="password" placeholder="Contraseña" required>
                     </div>
-                    <input type="submit" name = "iniciar-sesion">
-                </form>
-            </div>
+                    <div>
+                        <input type="checkbox" id="recordar-usuario">
+                        <label for="recordar-usuario">Recordar Usuario</label>
+                    </div>
+                    <input class="btn btn-primary" type="submit" name="iniciar-sesion" value="Iniciar Sesión">
+                </div>
+            </form>
         </div>
-        
-        
-    </body>
+    </div>
+
 </html>

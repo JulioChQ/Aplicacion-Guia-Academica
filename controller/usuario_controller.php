@@ -4,27 +4,36 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHP.php to edit this template
  */
-require '../model/Usuario.php';
+require_once 'model/Usuario.php';
 
+class UsuarioController
+{
+    private $usuario;
+    public function __construct()
+    {
+        $this->usuario = new Usuario();
+    }
 
-
-function login(){
-    $usuario = new Usuario();
-    if(!isset($_POST["usuario"])){
-        header("Location:index.php");
-    } else {
+    public function login()
+    {
         $codigo = $_POST["usuario"];
         $contrasenia = $_POST["contra"];
-        if($usuario->validarUsuario($codigo, $contrasenia)){
+        if ($this->usuario->validarUsuario($codigo, $contrasenia)) {
             echo 'USUARIO VALIDADO';
+            session_start();
+            $_SESSION["usuario"] = $codigo;
+            header("location:index.php");
         } else {
             echo 'Usuario no valido';
         }
     }
 }
 
-if(isset($_POST["iniciar-sesion"])){
-    login();
-} else {
-    echo 'Hubo un error';
+$usuarioController = new UsuarioController();
+
+
+if (isset($_POST["iniciar-sesion"])) {
+    $usuarioController->login();
+}else{
+    require_once "view/login.php";
 }
