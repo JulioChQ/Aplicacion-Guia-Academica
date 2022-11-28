@@ -10,6 +10,7 @@
 
 #cabecera-login{
     font-size: 80%;
+    background-color: skyblue;
 }
 
 
@@ -18,4 +19,7 @@
     .navbar-brand {
         display: none;
     }
+}
+#login-user{
+    background-color:lightcyan;
 }

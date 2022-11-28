@@ -19,13 +19,11 @@ class UsuarioController
         $codigo = $_POST["usuario"];
         $contrasenia = $_POST["contra"];
         if ($this->usuario->validarUsuario($codigo, $contrasenia)) {
-            echo 'USUARIO VALIDADO';
+            
             session_start();
-            $_SESSION["usuario"] = $codigo;
-            header("location:index.php");
-        } else {
-            echo 'Usuario no valido';
-        }
+            $_SESSION["usuario"] = $codigo;   
+        } 
+        header("location:index.php");
     }
 }
 
