@@ -13,6 +13,14 @@
     background-color: skyblue;
 }
 
+#login-user{
+    
+    width: 300px;
+}
+main{
+   
+    
+}
 
 /* Adaptable Responsivo */
 @media screen and (max-width: 767px) {
