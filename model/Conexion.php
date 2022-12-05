@@ -14,7 +14,10 @@
 
 class Conexion {
     public static function conectar() {
-        $conexion = mysqli_connect(DB_HOST, DB_USUARIO, DB_CONTRASENIA, DB_NOMBRE);
+        $conexion = mysqli_init();
+        $conexion->ssl_set(null,null,"model/ca-bundle.pem",null,null);
+        $conexion->real_connect(DB_HOST, DB_USUARIO, DB_CONTRASENIA, DB_NOMBRE);
+        
         return $conexion;
     }
 }

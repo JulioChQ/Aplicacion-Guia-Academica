@@ -11,11 +11,14 @@ class Usuario {
         $this->usuarios=array();
     }
     
+    
     public function validarUsuario($codigo, $contrasenia){
         $esUsuarioValido = false;
-        $sql = "SELECT * FROM usuario WHERE codigo = '$codigo' AND contrasenia = '$contrasenia'";
+        $sql = "SELECT * FROM usuario WHERE codigo = '$codigo' AND contrasenia = '$contrasenia';";
+        
         $resultado = $this->db->query($sql);
         
+        var_dump($resultado);
         
         if ($resultado->fetch_assoc()){
             $esUsuarioValido = true;

@@ -23,7 +23,8 @@ class UsuarioController
             session_start();
             $_SESSION["usuario"] = $codigo;   
         } 
-        header("location:index.php");
+        header("location: index.php");
+        
     }
 }
 

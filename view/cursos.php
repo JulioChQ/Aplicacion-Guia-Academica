@@ -20,7 +20,7 @@
    ?>
 
    <section>
-      <div class="container-md">
+      <div class="container-lg">
          <div class="row">
             <div class="col">
                <h2>Mis cursos</h2>
@@ -34,24 +34,37 @@
             while (isset($cursos[$i])) {
 
             ?>
-               <div class="col-md-4 col-sm-6">
+               <div class="col-xl-4 col-md-6">
                   <h3>Ciclo <?php echo $ciclo; ?></h3>
-                  <table>
+                  <table class="table table-striped">
                      <th>Nombre</th>
-                     <th>Créditos&nbsp&nbsp</th>
+                     <th>Cré.&nbsp&nbsp</th>
                      <th>Estado</th>
                      <?php
-                     while ($cursos[$i]["nro_ciclo"] == $ciclo) {
+                     while ($cursos[$i]["ciclo"] == $ciclo) {
                      ?>
                         <tr>
                            <td>
-                              <a href=""><?php echo $cursos[$i]["nombre"]; ?></a>
+                              <a href="">
+                                 <?php 
+                                 echo $cursos[$i]["nombre"]; 
+                                 if($cursos[$i]["electivo"] != 0){
+                                    echo "(E-" . $cursos[$i]["electivo"] . ")";
+                                 }
+                                 ?>
+                              </a>
                            </td>
                            <td>
-                              <?php echo $cursos[$i]["creditos"] ?>
+                              <?php 
+                              echo round($cursos[$i]["creditos"]);
+                              ?>
                            </td>
                            <td>
-                              <input type="checkbox" name="" id="">
+                              <select name="estado" id="">
+                                 <option value="-">-</option>
+                                 <option value="noaprobado">No aprobado</option>
+                                 <option value="aprobado">Aprobado</option>
+                              </select>
                            </td>
                         </tr>
                      <?php

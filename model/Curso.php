@@ -12,7 +12,7 @@ class Curso{
    }
 
    public function getListaCursosXUsuario($idUsuario){
-      $sql = "call cursos_por_usuario('$idUsuario');";
+      $sql = "SELECT asignatura.id_asignatura, asignatura.nombre, asignatura.horas_teoria + asignatura.horas_laboratorio/2 + asignatura.horas_practica/2 as creditos, asignatura.ciclo, asignatura.electivo  FROM (asignatura INNER JOIN curricula ON asignatura.id_curricula = curricula.id_curricula) INNER JOIN usuario ON usuario.id_curricula = curricula.id_curricula WHERE usuario.codigo = '$idUsuario'";
       $resultado = $this->db->query($sql);
       $cursos = $resultado->fetch_all(MYSQLI_ASSOC);
       return $cursos;
