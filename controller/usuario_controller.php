@@ -1,38 +1,19 @@
 <?php
-
-/* 
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHP.php to edit this template
- */
 require_once 'model/Usuario.php';
 
 class UsuarioController
 {
-    private $usuario;
-    public function __construct()
-    {
-        $this->usuario = new Usuario();
-    }
+    static private $usuario;
 
-    public function login()
+    static public function login()
     {
+        UsuarioController::$usuario = new Usuario();
         $codigo = $_POST["usuario"];
         $contrasenia = $_POST["contra"];
-        if ($this->usuario->validarUsuario($codigo, $contrasenia)) {
-            
+        if (UsuarioController::$usuario->validarUsuario($codigo, $contrasenia)) {
             session_start();
             $_SESSION["usuario"] = $codigo;   
         } 
         header("location: index.php");
-        
     }
-}
-
-$usuarioController = new UsuarioController();
-
-
-if (isset($_POST["iniciar-sesion"])) {
-    $usuarioController->login();
-}else{
-    require_once "view/login.php";
 }

@@ -3,24 +3,28 @@ require_once "model/Curso.php";
 require_once "model/Usuario.php";
 
 class CursoController{
-   private $curso_modelo;
-   private $usuario_modelo;
+   static private $curso_modelo;
+   static private $usuario_modelo;
 
-   function __construct()
+   static function inicializar()
    {
-      $this->curso_modelo = new Curso();
-      $this->usuario_modelo = new Usuario();
+      CursoController::$curso_modelo = new Curso();
+      CursoController::$usuario_modelo = new Usuario();
    }
 
-   public function vistaSituacionCursos(){
+   static public function verSituacionCursos(){
+      CursoController::inicializar();
       $codigoUsuario = $_SESSION["usuario"];
-      $cursos = $this->curso_modelo->getListaCursosXUsuario($codigoUsuario); 
-      $usuario = $this->usuario_modelo->getUsuario($codigoUsuario);
+      $cursos = CursoController::$curso_modelo->getListaCursosXUsuario($codigoUsuario); 
+      $usuario = CursoController::$usuario_modelo->getUsuario($codigoUsuario);
       $nombreUsuario = $usuario["nombre"] . " " . $usuario["apellido1"];
       require_once "view/cursos.php";
    }
+
+   static public function verCursoDetallado($idCurso){
+      CursoController::inicializar();
+      $curso = CursoController::$curso_modelo->getCursoXId($idCurso);
+      require_once "view/curso-detallado.php";
+      
+   }
 }
-
-$cursoController = new CursoController();
-
-$cursoController->vistaSituacionCursos();

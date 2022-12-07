@@ -17,4 +17,13 @@ class Curso{
       $cursos = $resultado->fetch_all(MYSQLI_ASSOC);
       return $cursos;
    }
+
+   public function getCursoXId($idCurso){
+      var_dump($idCurso);
+      $sql = "SELECT * FROM asignatura WHERE id_asignatura = '$idCurso';";
+      $resultado = $this->db->query($sql);
+      var_dump($resultado);
+      $cursos = $resultado->fetch_all(MYSQLI_ASSOC);
+      return $cursos;
+   }
 }

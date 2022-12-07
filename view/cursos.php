@@ -45,7 +45,7 @@
                      ?>
                         <tr>
                            <td>
-                              <a href="">
+                              <a href="index.php?curso=<?php echo $cursos[$i]["id_asignatura"]; ?>">
                                  <?php 
                                  echo $cursos[$i]["nombre"]; 
                                  if($cursos[$i]["electivo"] != 0){
