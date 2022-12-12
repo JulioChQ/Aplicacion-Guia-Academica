@@ -19,10 +19,10 @@ class Curso{
    }
 
    public function getCursoXId($idCurso){
-      var_dump($idCurso);
-      $sql = "SELECT * FROM asignatura WHERE id_asignatura = '$idCurso';";
+      //var_dump($idCurso);
+      $sql = "SELECT *, horas_teoria + horas_practica + horas_laboratorio AS horas_total, horas_teoria + (horas_practica + horas_laboratorio)/2 AS creditos FROM asignatura WHERE id_asignatura = '$idCurso';";
       $resultado = $this->db->query($sql);
-      var_dump($resultado);
+      //var_dump($resultado);
       $cursos = $resultado->fetch_all(MYSQLI_ASSOC);
       return $cursos;
    }

@@ -12,23 +12,23 @@
                     </a>
                     <ul class="navbar-nav d-flex justify-content-center align-items-center">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Cursos</a>
+                            <a class="nav-link active" aria-current="page" href="index.php?m=cursos">Cursos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Nosotros</a>
+                            <a class="nav-link" href="index.php?p=nosotros">Nosotros</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Procesos Académicos</a>
+                            <a class="nav-link" href="index.php?p=procesos">Procesos Académicos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Reportes</a>
+                            <a class="nav-link" href="index.php?m=reportes">Reportes</a>
                         </li>
                         <li class="nav-item">
                             <div class="dropdown text-end">
 
                                 <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle"
                                     data-bs-toggle="dropdown" aria-expanded="false">
-                                    <label ><?php echo $nombreUsuario; ?></label>
+                                    <label ><?php echo $_SESSION["nombre"]; ?></label>
                                     <img src="view/img/person-circle.svg" alt="mdo" width="32" height="32"
                                         class="rounded-circle">
                                 </a>

@@ -91,8 +91,9 @@
          <button class="btn btn-secondary">Cancelar</button>
       </div>
    </section>
-
-
+   <?php
+   require_once "view/footer.php"; 
+   ?>
 
 
 </body>

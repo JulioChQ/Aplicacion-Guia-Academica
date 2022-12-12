@@ -12,7 +12,9 @@ class UsuarioController
         $contrasenia = $_POST["contra"];
         if (UsuarioController::$usuario->validarUsuario($codigo, $contrasenia)) {
             session_start();
-            $_SESSION["usuario"] = $codigo;   
+            $_SESSION["usuario"] = $codigo;
+            $user = UsuarioController::$usuario->getUsuario($codigo);
+            $_SESSION["nombre"] = $user["nombre"] . " " . $user["apellido1"]; 
         } 
         header("location: index.php");
     }
