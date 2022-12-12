@@ -12,33 +12,40 @@
 <body id="login-user" class="text-center">
     
 
-    <main id="login" class="form-signin w-100 m-auto">
-        
+
+        <main class="form-signin w-100 m-auto">
+            <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST">
 
 
-        <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST">
+                <img src="view/img/person-circle.svg" class="mb-4" alt="mdo" width="72" height="72" class="rounded-circle">
+
+                <h1 id="login-titulo" class="h3 mb-3 fw-normal">Inicio de Sesión</h1>
+                <div class="form-floating">
+                    <label for="login-usuario">Usuario:</label><br>
+                    <input id="login-usuario" class="form-control" name="usuario" type="text" placeholder="Usuario" required>
+                </div>
+                <div class="form-floating">
+                    <label for="login-contra">Contraseña:</label><br>
+                    <input id="login-contra" class="form-control" name="contra" type="password" placeholder="Contraseña" required>
+                </div>
+                <div class="checkbox mb-3">
+                    <input type="checkbox" id="recordar-usuario">
+                    <label for="recordar-usuario">Recordar Usuario</label>
+                </div>
+                <input class="w-100 btn btn-lg btn-primary" type="submit" name="iniciar-sesion" value="Iniciar Sesión">
+
+            </form>
+
+        </main>
 
 
-            <img src="view/img/person-circle.svg" alt="mdo" width="100px" height="100px" class="rounded-circle">
 
-            <h4 id="login-titulo" class="h3 mb-3 fw-normal">Inicio de Sesión</h4>
-            <div class="form-floating">
-                <label for="login-usuario">Usuario:</label><br>
-                <input id="login-usuario" class="form-control" name="usuario" type="text" placeholder="Usuario" required>
-            </div>
-            <div class="form-floating">
-                <label for="login-contrasenia">Contraseña:</label><br>
-                <input id="login-contra" class="form-control" name="contra" type="password" placeholder="Contraseña" required>
-            </div>
-            <div class="checkbox mb-3">
-                <input type="checkbox" id="recordar-usuario">
-                <label for="recordar-usuario">Recordar Usuario</label>
-            </div>
-            <input class="w-100 btn btn-lg btn-primary" type="submit" name="iniciar-sesion" value="Iniciar Sesión">
+    
 
-        </form>
 
-    </main>
+
+
+
 </body>
 
 </html>
