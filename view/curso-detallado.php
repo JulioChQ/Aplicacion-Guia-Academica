@@ -40,7 +40,22 @@
 
          <div class="row">
             <h4>PRE REQUISITOS </h4>
-            <a href=""><b>MATEMÁTICA I</b></a><br><br>
+            <?php
+            if(!empty($prerrequisitos)){
+               foreach($prerrequisitos as $row ){
+            ?>
+            <li>
+            <a href="index.php?curso=<?=$row["id"]?>"><?=$row["nombre"]?></a>
+            </li>
+                  
+            <?php
+               }
+            }else{
+               echo "No tiene";
+            }
+            ?>
+            <br><br>
+            
 
             <h4>PROPÓSITO U OBJETIVO</h4>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, consequatur accusantium obcaecati

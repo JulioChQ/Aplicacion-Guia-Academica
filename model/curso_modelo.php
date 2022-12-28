@@ -26,4 +26,13 @@ class Curso{
       $cursos = $resultado->fetch_all(MYSQLI_ASSOC);
       return $cursos;
    }
+
+   public function getPrerrequisitosXId($idCurso){
+      $sql = "SELECT a.id_asignatura AS id, a.nombre AS nombre FROM (asignatura a INNER JOIN prerrequisito ON a.id_asignatura=prerrequisito.id_asignatura0) 
+      JOIN asignatura b ON prerrequisito.id_asignatura1=b.id_asignatura
+      WHERE b.id_asignatura = '$idCurso'";
+      $resultado = $this->db->query($sql);
+      $cursos = $resultado->fetch_all(MYSQLI_ASSOC);
+      return $cursos;
+   }
 }

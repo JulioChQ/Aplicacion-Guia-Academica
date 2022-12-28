@@ -15,10 +15,10 @@
                             <a class="nav-link active" aria-current="page" href="index.php?m=cursos">Cursos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php?p=nosotros">Nosotros</a>
+                            <a class="nav-link" href="index.php?p=procesos">Procesos Académicos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php?p=procesos">Procesos Académicos</a>
+                            <a class="nav-link" href="index.php?p=nosotros">Simulación</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="index.php?m=reportes">Reportes</a>
