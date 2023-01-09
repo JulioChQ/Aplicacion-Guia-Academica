@@ -5,7 +5,7 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Cursos | Sistema de Guía Académica |</title>
+   <title><?=$curso[0]["nombre"]?> | Cursos | Sistema de Guía Académica |</title>
    <link rel="stylesheet" href="view/estilo.css">
 
 
@@ -106,22 +106,7 @@
                         <td><b>Código de curso</b></td>
                         <td>1234</td>
                      </tr>
-                     <tr>
-                        <td><b>Horas de Práctica</b></td>
-                        <td>2</td>
-                     </tr>
-                     <tr>
-                        <td><b>Horas de Laboratorio</b></td>
-                        <td>Ninguno</td>
-                     </tr>
-                     <tr>
-                        <td><b>Total de horas</b></td>
-                        <td>5</td>
-                     </tr>
-                     <tr>
-                        <td><b>Créditos:</b></td>
-                        <td>4</td>
-                     </tr>
+                     
                   </table>
                </div>
             </div>

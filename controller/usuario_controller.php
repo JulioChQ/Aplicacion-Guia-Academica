@@ -12,10 +12,22 @@ class UsuarioController
         $contrasenia = $_POST["contra"];
         if (UsuarioController::$usuario->validarUsuario($codigo, $contrasenia)) {
             session_start();
-            $_SESSION["usuario"] = $codigo;
+            $_SESSION["codigo"] = $codigo;
+            
             $user = UsuarioController::$usuario->getUsuario($codigo);
-            $_SESSION["nombre"] = $user["nombre"] . " " . $user["apellido1"]; 
-        } 
-        header("location: index.php");
+            $_SESSION["id"] = $user["id_usuario"];
+            $_SESSION["nombre-corto"] = $user["nombre"] . " " . $user["apellido1"]; 
+            $_SESSION["nombre-completo"] = $_SESSION["nombre-corto"] . " " . $user["apellido2"];
+            $_SESSION["tipo"] = $user["tipo"];
+            $_SESSION["ciclo"] = $user["ciclo"];
+            $_SESSION["id_curricula"] = $user["id_curricula"];
+            header("location: index.php");
+        } else {
+            echo '<script type="text/javascript">
+               alert("¡Usuario o Contraseña incorrecta!");
+               window.location.href="index.php";
+               </script>';
+            //header("location: index.php");
+        }
     }
 }

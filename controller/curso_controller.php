@@ -2,7 +2,8 @@
 require_once "model/curso_modelo.php";
 require_once "model/usuario_modelo.php";
 
-class CursoController{
+class CursoController
+{
    static private $curso_modelo;
    static private $usuario_modelo;
 
@@ -12,20 +13,34 @@ class CursoController{
       CursoController::$usuario_modelo = new Usuario();
    }
 
-   static public function verSituacionCursos(){
+   static public function verSituacionCursos()
+   {
       CursoController::inicializar();
-      $codigoUsuario = $_SESSION["usuario"];
-      $cursos = CursoController::$curso_modelo->getListaCursosXUsuario($codigoUsuario); 
-      $usuario = CursoController::$usuario_modelo->getUsuario($codigoUsuario);
-      $nombreUsuario = $usuario["nombre"] . " " . $usuario["apellido1"];
+
+      if (isset($_POST["guardar-situacion"])) {
+         $idCursos = $_POST["id-curso"];
+         //var_dump($idCursos);
+         $estados = $_POST["estado"];
+         //var_dump($estados);
+         CursoController::$curso_modelo->guardarSituacionCurso($idCursos, $estados);
+         echo '<script type="text/javascript">
+               alert("Cambios guardados con exito");
+               
+               </script>';
+      }
+
+      $codigoUsuario = $_SESSION["codigo"];
+      $cursos = CursoController::$curso_modelo->getListaCursosXUsuario($codigoUsuario);
       require_once "view/cursos.php";
    }
 
-   static public function verCursoDetallado(){
+   static public function verCursoDetallado()
+   {
       CursoController::inicializar();
+
+
       $curso = CursoController::$curso_modelo->getCursoXId($_GET["curso"]);
       $prerrequisitos = CursoController::$curso_modelo->getPrerrequisitosXId($_GET["curso"]);
       require_once "view/curso-detallado.php";
-      
    }
 }

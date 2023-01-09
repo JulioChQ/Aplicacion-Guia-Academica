@@ -35,4 +35,12 @@ class Usuario {
         $usuarios = $resultado->fetch_assoc();
         return $usuarios;
     }
+
+    public function getIdUsuario($codigo){
+        $sql = "SELECT id_usuario FROM usuario WHERE codigo = '$codigo'";
+        $resultado = $this->db->query($sql);
+
+        $usuarios = $resultado->fetch_assoc();
+        return $usuarios;
+    }
 }

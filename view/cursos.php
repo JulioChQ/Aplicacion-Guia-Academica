@@ -26,13 +26,19 @@
                <h2>Mis cursos</h2>
             </div>
          </div>
+         <p>A continuación se muestran los cursos correspondientes a su plan de estudios:</p>
+         <p>
+            Ingrese los siguientes estados segun sea el caso:
+            <li>No Aprobado: Si aun no llevó o desaprobó el curso.</li>
+            <li>Aprobado: Si aprobó el curso.</li>
+         </p>
 
          <form action="index.php" method="POST">
 
 
             <div class="row">
                <?php
-               var_dump($cursos[22]);
+               //var_dump($cursos[22]);
                $ciclo = 1;
                $i = 0;
                while (isset($cursos[$i])) {
@@ -41,6 +47,7 @@
                   <div class="col-xl-4 col-md-6">
                      <h3>Ciclo <?php echo $ciclo; ?></h3>
                      <table class="table table-striped">
+                        <th>#</th>
                         <th>Nombre</th>
                         <th>Cré.&nbsp&nbsp</th>
                         <th>Estado</th>
@@ -48,8 +55,9 @@
                         while ($cursos[$i]["ciclo"] == $ciclo) {
                         ?>
                            <tr>
+                              <td><?=$i+1?></td>
                               <td>
-                                 <a href="index.php?curso=<?php echo $cursos[$i]["id_asignatura"]; ?>">
+                                 <a class="link-curso" href="index.php?curso=<?php echo $cursos[$i]["id_asignatura"]; ?>">
                                     <?php
                                     echo $cursos[$i]["nombre"];
                                     if ($cursos[$i]["electivo"] != 0) {
@@ -61,11 +69,18 @@
                               <td>
                                  <?php
                                  echo round($cursos[$i]["creditos"]);
+                                 if($cursos[$i]["prerrequisitos"] > 0){
+                                    $deshabilitar = "disabled";
+                                    $valor = $cursos[$i]["id_asignatura"];
+                                    echo "<input type='hidden' name='estado[]' value='$valor'";
+                                 }else{
+                                    $deshabilitar = "";
+                                 }
                                  ?>
                               </td>
                               <td>
-                                 <input type="hidden" name="id-curso" value="<?=$cursos[$i]["id_asignatura"]?>">
-                                 <select name="estado" id="">
+                                 <input type="hidden" name="id-curso[]" value="<?= $cursos[$i]["id_asignatura"] ?>">
+                                 <select class="form-select form-select-sm mb-5" name="estado[]" <?=$deshabilitar?>>
 
                                     <?php
                                     $estado = $cursos[$i]["estado"];
@@ -82,9 +97,9 @@
                                           $texto[0] = "selected";
                                     }
                                     ?>
-                                    <option value="-" <?= $texto[0] ?>>-</option>
-                                    <option value="noaprobado" <?= $texto[1] ?>>No aprobado</option>
-                                    <option value="aprobado" <?= $texto[2] ?>>Aprobado</option>
+                                    <option value="null" <?= $texto[0] ?>>-</option>
+                                    <option value="0" <?= $texto[1] ?>>No aprobado</option>
+                                    <option value="1" <?= $texto[2] ?>>Aprobado</option>
                                  </select>
                               </td>
                            </tr>
@@ -108,8 +123,11 @@
 
             </div>
             <br>
+
+
             <input type="submit" value="Guardar Cambios" class="btn btn-primary" name="guardar-situacion">
             <button class="btn btn-secondary">Cancelar</button>
+
          </form>
       </div>
    </section>
