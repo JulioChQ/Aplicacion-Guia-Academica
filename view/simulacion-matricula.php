@@ -51,92 +51,95 @@
                <input type="text" class="input-matricula" id="escuela" value="ESCUELA PROFESIONAL DE INGENIERÍA EN INFORMÁTICA Y SISTEMAS" disabled>
             </div>
          </div><br>
-         <div class="row">
-            <h5>Información de Matrícula</h5>
-            <div class="col-xl-4 col-md-4">
-               <label for="situacion">Situación Matrícula</label><br>
-               <select onchange="cambiarCreditos()" class="form-select" name="situacion" id="situacion">
-                  <option value="irregular">Irregular</option>
-                  <option value="regular">Regular</option>
-                  <option value="extraordinario">Extraordinario</option>
-               </select>
-            </div>
-            <div class="col-xl-4 col-md-4">
-               <label for="creditos-total">Creditos Máximos</label><br>
-               <input type="text" class="input-matricula" id="creditos-total" value="12" disabled>
-            </div>
-            <div class="col-xl-4 col-md-4">
-               <label for="creditos-selec">Creditos Seleccionados</label><br>
-               <input type="text" class="input-matricula" id="creditos-selec" value="0" disabled>
-            </div><br>
 
-            <div class="table-responsive">
-               <table id="cursos" class="table table-hover">
-                  <thead>
-                     <tr>
-                        <th>Nro.</th>
-                        <th>Asignatura</th>
-                        <th>Ciclo</th>
-                        <th>H.T.</th>
-                        <th>H.P.</th>
-                        <th>H.L.</th>
-                        <th>Cred.</th>
-                        <th>Nro. Matrícula</th>
-                        <th>Estado</th>
-                     </tr>
-                  </thead>
+         <form action="index.php?p=simulacion" method="POST">
+            <div class="row">
+               <h5>Información de Matrícula</h5>
+               <div class="col-xl-4 col-md-4">
+                  <label for="situacion">Situación Matrícula</label><br>
+                  <select onchange="cambiarCreditos()" class="form-select" name="situacion" id="situacion">
+                     <option value="irregular">Irregular</option>
+                     <option value="regular">Regular</option>
+                     <option value="extraordinario">Extraordinario</option>
+                  </select>
+               </div>
+               <div class="col-xl-4 col-md-4">
+                  <label for="creditos-total">Creditos Máximos</label><br>
+                  <input type="text" class="input-matricula" id="creditos-total" value="12" disabled>
+               </div>
+               <div class="col-xl-4 col-md-4">
+                  <label for="creditos-selec">Creditos Seleccionados</label><br>
+                  <input type="text" class="input-matricula" id="creditos-selec" value="0" disabled>
+               </div><br>
 
-                  <tr id="curso-1">
-                     <td>1</td>
-                     <td>Matematica</td>
-                     <td>1</td>
-                     <td>2</td>
-                     <td>2</td>
-                     <td>0</td>
-                     <td class="curso-creditos">3</td>
-                     <td>
-                        <select class="nro-matricula" name="nro-matricula[]" id="nro-matricula[]">
-                           <option value="1">1</option>
-                           <option value="2">2</option>
-                           <option value="3">3</option>
-                           <option value="4">4</option>
-                        </select>
-                     </td>
-                     <td>
-                        <input type="checkbox" class="checkbox curso-estado" name="estado[]" id="estado[]" onchange="modificarCreditosSeleccionados()">
-                     </td>
-                  </tr>
-                  <tr id="curso-2">
-                     <td>2</td>
-                     <td>Fundamentos de Programacion</td>
-                     <td>1</td>
-                     <td>2</td>
-                     <td>2</td>
-                     <td>0</td>
-                     <td class="curso-creditos">3</td>
-                     <td>
-                        <select class="nro-matricula" name="nro-matricula[]" id="nro-matricula[]">
-                           <option value="1">1</option>
-                           <option value="2">2</option>
-                           <option value="3">3</option>
-                           <option value="4">4</option>
-                        </select>
-                     </td>
-                     <td>
-                        <input type="checkbox" class="checkbox curso-estado" name="estado[]" id="estado[]" onchange="modificarCreditosSeleccionados()">
-                     </td>
-                  </tr>
-               </table>
-               <div class="row text-center">
-                  <div class="col-12">
-                     <input type="submit" class="btn btn-primary" value="Generar Matrícula">
-                     <button class="btn btn-secondary">Descartar Cambios</button>
+               <div class="table-responsive">
+                  <table id="cursos" class="table table-hover">
+                     <thead>
+                        <tr>
+                           <th>Nro.</th>
+                           <th>Asignatura</th>
+                           <th>Ciclo</th>
+                           <th>H.T.</th>
+                           <th>H.P.</th>
+                           <th>H.L.</th>
+                           <th>Cred.</th>
+                           <th>Nro. Matrícula</th>
+                           <th>Estado</th>
+                        </tr>
+                     </thead>
+                     <?php
+                     $contador = 0;
+                     foreach ($listaCursos as $row) {
+                        $contador++;
+                     ?>
+
+                        <tr id="curso-<?= $contador ?>">
+                           <td><?= $contador ?></td>
+                           <td>
+                              <?php
+                              if($row["electivo"]>0){
+                                 echo $row["nombre"] ." ". "(E-" . $row["electivo"] . ")";
+                              }else{
+                                 echo $row["nombre"];
+                              }
+                               
+                              ?>
+                           </td>
+                           <td><?= $row["ciclo"] ?></td>
+                           <td><?= $row["horas_teoria"] ?></td>
+                           <td><?= $row["horas_practica"] ?></td>
+                           <td><?= $row["horas_laboratorio"] ?></td>
+                           <td class="curso-creditos">
+                              <?= $row["horas_teoria"] + ($row["horas_practica"] + $row["horas_laboratorio"]) / 2 ?>
+                           </td>
+                           <td>
+                              <select class="nro-matricula" name="nro-matricula[]" id="nro-matricula[]">
+                                 <option value="1">1</option>
+                                 <option value="2">2</option>
+                                 <option value="3">3</option>
+                                 <option value="4">4</option>
+                              </select>
+                           </td>
+                           <td>
+                              <input type="checkbox" class="checkbox curso-estado" name="estado[]" id="estado[]" onchange="modificarCreditosSeleccionados()">
+                           </td>
+                        </tr>
+                     <?php
+                     }
+                     ?>
+                  </table>
+                  <div class="row text-center">
+                     <div class="col-12">
+                        <input type="submit" class="btn btn-primary" value="Generar Matrícula">
+                        <button class="btn btn-secondary">Descartar Cambios</button>
+                     </div>
+
                   </div>
 
                </div>
-
             </div>
-         </div>
+         </form>
+
       </div>
    </section>
 

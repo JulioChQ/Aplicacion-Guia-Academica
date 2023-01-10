@@ -35,7 +35,6 @@
 
          <form action="index.php" method="POST">
 
-
             <div class="row">
                <?php
                //var_dump($cursos[22]);
@@ -45,73 +44,86 @@
 
                ?>
                   <div class="col-xl-4 col-md-6">
-                     <h3>Ciclo <?php echo $ciclo; ?></h3>
-                     <table class="table table-striped">
-                        <th>#</th>
-                        <th>Nombre</th>
-                        <th>Cré.&nbsp&nbsp</th>
-                        <th>Estado</th>
-                        <?php
-                        while ($cursos[$i]["ciclo"] == $ciclo) {
-                        ?>
-                           <tr>
-                              <td><?=$i+1?></td>
-                              <td>
-                                 <a class="link-curso" href="index.php?curso=<?php echo $cursos[$i]["id_asignatura"]; ?>">
-                                    <?php
-                                    echo $cursos[$i]["nombre"];
-                                    if ($cursos[$i]["electivo"] != 0) {
-                                       echo "(E-" . $cursos[$i]["electivo"] . ")";
-                                    }
-                                    ?>
-                                 </a>
-                              </td>
-                              <td>
+                  <div class="accordion" id="accordionExample">
+                     <div class="accordion-item">
+                        <h2 class="accordion-header" id="panelsStayOpen-heading<?=$i?>">
+                           <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse<?=$i?>" aria-expanded="true" aria-controls="collapse<?=$i?>">
+                              Ciclo <?php echo $ciclo; ?>
+                           </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapse<?=$i?>" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading<?=$i?>" data-bs-parent="#accordionExample">
+                           <div class="accordion-body">
+
+                              <table class="table table-striped">
+                                 <th>#</th>
+                                 <th>Nombre</th>
+                                 <th>Cré.&nbsp&nbsp</th>
+                                 <th>Estado</th>
                                  <?php
-                                 echo round($cursos[$i]["creditos"]);
-                                 if($cursos[$i]["prerrequisitos"] > 0){
-                                    $deshabilitar = "disabled";
-                                    $valor = $cursos[$i]["id_asignatura"];
-                                    echo "<input type='hidden' name='estado[]' value='$valor'";
-                                 }else{
-                                    $deshabilitar = "";
+                                 while ($cursos[$i]["ciclo"] == $ciclo) {
+                                 ?>
+                                    <tr>
+                                       <td><?= $i + 1 ?></td>
+                                       <td>
+                                          <a class="link-curso" href="index.php?curso=<?php echo $cursos[$i]["id_asignatura"]; ?>">
+                                             <?php
+                                             echo $cursos[$i]["nombre"];
+                                             if ($cursos[$i]["electivo"] != 0) {
+                                                echo "(E-" . $cursos[$i]["electivo"] . ")";
+                                             }
+                                             ?>
+                                          </a>
+                                       </td>
+                                       <td>
+                                          <?php
+                                          echo round($cursos[$i]["creditos"]);
+                                          if ($cursos[$i]["prerrequisitos"] > 0) {
+                                             $deshabilitar = "disabled";
+                                             $valor = $cursos[$i]["id_asignatura"];
+                                             echo "<input type='hidden' name='estado[]' value='$valor'";
+                                          } else {
+                                             $deshabilitar = "";
+                                          }
+                                          ?>
+                                       </td>
+                                       <td>
+                                          <input type="hidden" name="id-curso[]" value="<?= $cursos[$i]["id_asignatura"] ?>">
+                                          <select class="form-select form-select-sm mb-5" name="estado[]" <?= $deshabilitar ?>>
+
+                                             <?php
+                                             $estado = $cursos[$i]["estado"];
+
+                                             $texto = array("", "", "");
+                                             switch ($estado) {
+                                                case "0":
+                                                   $texto[1] = "selected";
+                                                   break;
+                                                case 1:
+                                                   $texto[2] = "selected";
+                                                   break;
+                                                case null:
+                                                   $texto[0] = "selected";
+                                             }
+                                             ?>
+                                             <option value="null" <?= $texto[0] ?>>-</option>
+                                             <option value="0" <?= $texto[1] ?>>No aprobado</option>
+                                             <option value="1" <?= $texto[2] ?>>Aprobado</option>
+                                          </select>
+                                       </td>
+                                    </tr>
+                                 <?php
+                                    $i++;
+                                    if ($i >= count($cursos)) {
+                                       break;
+                                    }
                                  }
                                  ?>
-                              </td>
-                              <td>
-                                 <input type="hidden" name="id-curso[]" value="<?= $cursos[$i]["id_asignatura"] ?>">
-                                 <select class="form-select form-select-sm mb-5" name="estado[]" <?=$deshabilitar?>>
 
-                                    <?php
-                                    $estado = $cursos[$i]["estado"];
-
-                                    $texto = array("", "", "");
-                                    switch ($estado) {
-                                       case "0":
-                                          $texto[1] = "selected";
-                                          break;
-                                       case 1:
-                                          $texto[2] = "selected";
-                                          break;
-                                       case null:
-                                          $texto[0] = "selected";
-                                    }
-                                    ?>
-                                    <option value="null" <?= $texto[0] ?>>-</option>
-                                    <option value="0" <?= $texto[1] ?>>No aprobado</option>
-                                    <option value="1" <?= $texto[2] ?>>Aprobado</option>
-                                 </select>
-                              </td>
-                           </tr>
-                        <?php
-                           $i++;
-                           if ($i >= count($cursos)) {
-                              break;
-                           }
-                        }
-                        ?>
-
-                     </table>
+                              </table>
+                           </div>
+                        </div>
+                     </div>
+                     </div>
                   </div>
                <?php
 

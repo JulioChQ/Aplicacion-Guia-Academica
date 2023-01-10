@@ -51,7 +51,7 @@ class Curso{
       // MODIFICAR LA CONSULTA
       //var_dump($idAsignaturas);
       $idUsuario = $_SESSION["id"];
-      $cursos_actual = $this->getListaCursosXUsuario($_SESSION["usuario"]);
+      $cursos_actual = $this->getListaCursosXUsuario($_SESSION["codigo"]);
 
       for ($i = 0; $i < count($idAsignaturas); $i++) {
          $estado = $estados[$i];
