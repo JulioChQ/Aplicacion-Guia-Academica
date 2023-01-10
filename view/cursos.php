@@ -43,7 +43,7 @@
                while (isset($cursos[$i])) {
 
                ?>
-                  <div class="col-xl-4 col-md-6">
+                  <div class="col-xl-6 col-md-12">
                   <div class="accordion" id="accordionExample">
                      <div class="accordion-item">
                         <h2 class="accordion-header" id="panelsStayOpen-heading<?=$i?>">
@@ -88,7 +88,7 @@
                                        </td>
                                        <td>
                                           <input type="hidden" name="id-curso[]" value="<?= $cursos[$i]["id_asignatura"] ?>">
-                                          <select class="form-select form-select-sm mb-5" name="estado[]" <?= $deshabilitar ?>>
+                                          <select class="form-select form-select-sm mb-3" name="estado[]" <?= $deshabilitar ?>>
 
                                              <?php
                                              $estado = $cursos[$i]["estado"];
