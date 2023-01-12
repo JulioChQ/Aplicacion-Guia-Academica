@@ -29,7 +29,7 @@ class Usuario {
     }
 
     public function getUsuario($codigo){
-        $sql = "SELECT * FROM usuario WHERE codigo = '$codigo'";
+        $sql = "SELECT usuario.codigo, usuario.tipo, usuario.nombre, usuario.apellido1, usuario.apellido2, usuario.ciclo, usuario.genero, curricula.regimen, escuela.abreviatura, escuela.nombre AS nombre_escuela FROM (usuario JOIN curricula ON usuario.id_curricula = curricula.id_curricula) JOIN escuela ON curricula.id_escuela = escuela.id_escuela WHERE codigo = '$codigo'";
         $resultado = $this->db->query($sql);
 
         $usuarios = $resultado->fetch_assoc();
@@ -43,4 +43,6 @@ class Usuario {
         $usuarios = $resultado->fetch_assoc();
         return $usuarios;
     }
+
+    
 }

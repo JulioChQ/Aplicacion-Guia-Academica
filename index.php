@@ -20,7 +20,12 @@ if(!isset($_SESSION["codigo"])){
         }else{
             switch($_GET["p"]){
                 case "simulacion":
-                    MatriculaController::verSimulacionMatricula();
+                    if(!isset($_POST["generar-matricula"])){
+                        MatriculaController::verSimulacionMatricula();
+                    }else{
+                        MatriculaController::generarReporteMatricula();
+                    }
+                    
             }
         }
     }else{

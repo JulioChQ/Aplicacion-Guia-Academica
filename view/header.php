@@ -30,9 +30,7 @@ if(!isset($_GET["p"])){
                     <li class="nav-item">
                         <a class="nav-link <?=$activo[2]?>" href="index.php?p=simulacion">Simulación</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link <?=$activo[3]?>" href="index.php?p=reportes">Reportes</a>
-                    </li>
+                    
                     <li class="nav-item">
                         <div class="dropdown text-end">
 

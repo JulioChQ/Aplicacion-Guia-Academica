@@ -27,4 +27,12 @@ class Matricula{
       return $matricula;
    }
 
+   public function getAsignaturaXId($idAsignatura){
+      $sql = "SELECT *, asignatura.horas_teoria + asignatura.horas_laboratorio/2 + asignatura.horas_practica/2 as creditos FROM asignatura 
+      WHERE id_asignatura = $idAsignatura";
+      $resultado = $this->db->query($sql);
+      $matricula = $resultado->fetch_assoc();
+      return $matricula;
+   }
+
 }

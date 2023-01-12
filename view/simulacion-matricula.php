@@ -52,24 +52,28 @@
             </div>
          </div><br>
 
-         <form action="index.php?p=simulacion" method="POST">
+         <form action="index.php?p=simulacion" method="POST" target="_blank">
             <div class="row">
                <h5>Información de Matrícula</h5>
-               <div class="col-xl-4 col-md-4">
-                  <label for="situacion">Situación Matrícula</label><br>
+               <div class="col-xl-3 col-md-4">
+                  <label for="situacion">Situación de Estudiante</label><br>
                   <select onchange="cambiarCreditos()" class="form-select" name="situacion" id="situacion">
-                     <option value="irregular">Irregular</option>
-                     <option value="regular">Regular</option>
-                     <option value="extraordinario">Extraordinario</option>
+                     <option value="especial">Especial</option>
+                     <option value="regular" selected>Regular</option>
+                     <option value="destacado">Destacado</option>
                   </select>
                </div>
-               <div class="col-xl-4 col-md-4">
+               <div class="col-xl-3 col-md-4">
                   <label for="creditos-total">Creditos Máximos</label><br>
-                  <input type="text" class="input-matricula" id="creditos-total" value="12" disabled>
+                  <input type="text" class="input-matricula" id="creditos-total" value="22" readonly onchange="actualizarRestriccion()" name="creditos-total">
                </div>
-               <div class="col-xl-4 col-md-4">
+               <div class="col-xl-3 col-md-4">
                   <label for="creditos-selec">Creditos Seleccionados</label><br>
-                  <input type="text" class="input-matricula" id="creditos-selec" value="0" disabled>
+                  <input type="text" class="input-matricula" id="creditos-selec" value="0" name="creditos-selec" readonly>
+               </div><br>
+               <div class="col-xl-3 col-md-4">
+                  <label for="horas-total">Total de Horas</label><br>
+                  <input type="text" class="input-matricula" id="horas-total" value="0" name="horas-total" readonly>
                </div><br>
 
                <div class="table-responsive">
@@ -83,7 +87,7 @@
                            <th>H.P.</th>
                            <th>H.L.</th>
                            <th>Cred.</th>
-                           <th>Nro. Matrícula</th>
+                           <th>Nro. Mat.</th>
                            <th>Estado</th>
                         </tr>
                      </thead>
@@ -94,6 +98,9 @@
                      ?>
 
                         <tr id="curso-<?= $contador ?>">
+                           <input type="hidden" name="id_asignatura[]" value="<?=$row["id_asignatura"]?>">
+                           <input type="hidden" name="estado-aux[]" class="estado-aux" value="no">
+                           <input type="hidden" name="nro-matricula-aux[]" class="nro-matricula-aux" value="1">
                            <td><?= $contador ?></td>
                            <td>
                               <?php
@@ -106,14 +113,14 @@
                               ?>
                            </td>
                            <td><?= $row["ciclo"] ?></td>
-                           <td><?= $row["horas_teoria"] ?></td>
-                           <td><?= $row["horas_practica"] ?></td>
-                           <td><?= $row["horas_laboratorio"] ?></td>
+                           <td class="curso-ht"><?= $row["horas_teoria"] ?></td>
+                           <td class="curso-hp"><?= $row["horas_practica"] ?></td>
+                           <td class="curso-hl"><?= $row["horas_laboratorio"] ?></td>
                            <td class="curso-creditos">
                               <?= $row["horas_teoria"] + ($row["horas_practica"] + $row["horas_laboratorio"]) / 2 ?>
                            </td>
                            <td>
-                              <select class="nro-matricula" name="nro-matricula[]" id="nro-matricula[]">
+                              <select class="nro-matricula" name="nro-matricula-<?=$row["id_asignatura"]?>" id="nro-matricula" onchange="actualizarEstadoCursos()">
                                  <option value="1">1</option>
                                  <option value="2">2</option>
                                  <option value="3">3</option>
@@ -121,7 +128,7 @@
                               </select>
                            </td>
                            <td>
-                              <input type="checkbox" class="checkbox curso-estado" name="estado[]" id="estado[]" onchange="modificarCreditosSeleccionados()">
+                              <input type="checkbox" class="checkbox curso-estado" name="estado-<?=$row["id_asignatura"]?>" id="estado" onchange="modificarCreditosSeleccionados()">
                            </td>
                         </tr>
                      <?php
@@ -130,8 +137,9 @@
                   </table>
                   <div class="row text-center">
                      <div class="col-12">
-                        <input type="submit" class="btn btn-primary" value="Generar Matrícula">
-                        <button class="btn btn-secondary">Descartar Cambios</button>
+                        <input type="submit" name="generar-matricula" class="btn btn-primary" value="Generar Matrícula">
+                        <a href="index.php?p=simulacion"><button class="btn btn-secondary"> Descartar Cambios</button></a>
+                        
                      </div>
 
                   </div>

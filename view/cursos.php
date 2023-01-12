@@ -79,7 +79,7 @@
                                           echo round($cursos[$i]["creditos"]);
                                           if ($cursos[$i]["prerrequisitos"] > 0) {
                                              $deshabilitar = "disabled";
-                                             $valor = $cursos[$i]["id_asignatura"];
+                                             $valor = $cursos[$i]["estado"];
                                              echo "<input type='hidden' name='estado[]' value='$valor'";
                                           } else {
                                              $deshabilitar = "";
@@ -93,21 +93,18 @@
                                              <?php
                                              $estado = $cursos[$i]["estado"];
 
-                                             $texto = array("", "", "");
+                                             $texto = array("", "");
                                              switch ($estado) {
-                                                case "0":
-                                                   $texto[1] = "selected";
+                                                case 0:
+                                                   $texto[0] = "selected";
                                                    break;
                                                 case 1:
-                                                   $texto[2] = "selected";
+                                                   $texto[1] = "selected";
                                                    break;
-                                                case null:
-                                                   $texto[0] = "selected";
                                              }
                                              ?>
-                                             <option value="null" <?= $texto[0] ?>>-</option>
-                                             <option value="0" <?= $texto[1] ?>>No aprobado</option>
-                                             <option value="1" <?= $texto[2] ?>>Aprobado</option>
+                                             <option value="0" <?= $texto[0] ?>>No aprobado</option>
+                                             <option value="1" <?= $texto[1] ?>>Aprobado</option>
                                           </select>
                                        </td>
                                     </tr>

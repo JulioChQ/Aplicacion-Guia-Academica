@@ -20,7 +20,8 @@ class UsuarioController
             $_SESSION["nombre-completo"] = $_SESSION["nombre-corto"] . " " . $user["apellido2"];
             $_SESSION["tipo"] = $user["tipo"];
             $_SESSION["ciclo"] = $user["ciclo"];
-            $_SESSION["id_curricula"] = $user["id_curricula"];
+            $_SESSION["regimen"] = $user["regimen"];
+            $_SESSION["nombre_escuela"] = $user["nombre_escuela"];
             header("location: index.php");
         } else {
             echo '<script type="text/javascript">
