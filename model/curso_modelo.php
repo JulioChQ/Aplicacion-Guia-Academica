@@ -51,6 +51,7 @@ class Curso{
       // MODIFICAR LA CONSULTA
       //var_dump($idAsignaturas);
       $idUsuario = $_SESSION["id"];
+      var_dump($_SESSION);
       $cursos_actual = $this->getListaCursosXUsuario($_SESSION["codigo"]);
 
       for ($i = 0; $i < count($idAsignaturas); $i++) {
@@ -58,7 +59,7 @@ class Curso{
          $idAsignatura = $idAsignaturas[$i];
          if ($estado != $cursos_actual[$i]["estado"]) {
             $sql = "UPDATE situacion_asignatura SET estado = $estado WHERE (id_usuario = $idUsuario) and (id_asignatura = $idAsignatura);";
-            //var_dump($sql);
+            var_dump($sql);
             $resultado = $this->db->query($sql);
             //var_dump($resultado);
          }

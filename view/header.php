@@ -1,11 +1,16 @@
 <?php
-$activo = array("","","","");
-if(!isset($_GET["p"])){
-    $activo[0] = "active opcion-actual";
-}else{
-    switch ($_GET["p"]){
+$activo = array("", "", "", "");
+if (!isset($_GET["p"])) {
+    if(!isset($_GET["datos-personales"])){
+        $activo[0] = "active opcion-actual";
+    }
+    
+} else {
+    switch ($_GET["p"]) {
         case "simulacion":
             $activo[2] = "active opcion-actual";
+        case "procesos":
+            $activo[1] = "active opcion-actual";
     }
 }
 ?>
@@ -22,15 +27,15 @@ if(!isset($_GET["p"])){
                 </a>
                 <ul class="navbar-nav d-flex justify-content-center align-items-center">
                     <li class="nav-item">
-                        <a class="nav-link <?=$activo[0]?>" href="index.php">Cursos</a>
+                        <a class="nav-link <?= $activo[0] ?>" href="index.php">Cursos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?=$activo[1]?>" href="index.php?p=procesos">Procesos Académicos</a>
+                        <a class="nav-link <?= $activo[1] ?>" href="index.php?p=procesos">Procesos Académicos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?=$activo[2]?>" href="index.php?p=simulacion">Simulación</a>
+                        <a class="nav-link <?= $activo[2] ?>" href="index.php?p=simulacion">Simulación</a>
                     </li>
-                    
+
                     <li class="nav-item">
                         <div class="dropdown text-end">
 
@@ -39,8 +44,7 @@ if(!isset($_GET["p"])){
                                 <img src="view/img/person-circle.svg" alt="mdo" width="32" height="32" class="rounded-circle">
                             </a>
                             <ul class="dropdown-menu text-small" style="">
-                                <li><a class="dropdown-item" href="#">Perfil</a></li>
-                                <li><a class="dropdown-item" href="#">Configuración</a></li>
+                                <li><a class="dropdown-item" href="index.php?datos-personales">Mis Datos Personales</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>

@@ -1,0 +1,8 @@
+*{
+   font-family: Georgia, 'Times New Roman', Times, serif !important;
+}
+
+.input-matricula{
+   box-sizing: content-box;
+   width: 100%;
+ }

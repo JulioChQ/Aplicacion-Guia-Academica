@@ -32,23 +32,23 @@
             <h5>Información Personal</h5>
             <div class="col-xl-3 col-md-3">
                <label for="codigo-alumno">Código de alumno</label><br>
-               <input type="text" class="input-matricula" id="codigo-alumno" value="2018-119025" disabled>
+               <input type="text" class="input-matricula" id="codigo-alumno" value="<?=$codigo?>" disabled>
             </div>
             <div class="col-xl-6 col-md-6">
                <label for="nombre-apellido">Nombres y Apellidos</label><br>
-               <input type="text" class="input-matricula" id="nombre-apellido" value="JULIO CÉSAR CHOQUEHUAYTA QUENTA" disabled>
+               <input type="text" class="input-matricula" id="nombre-apellido" value="<?=$_SESSION["nombre-completo"]?>" disabled>
             </div>
             <div class="col-xl-3 col-md-3">
                <label for="ciclo">Ciclo</label><br>
-               <input type="text" class="input-matricula" id="ciclo" value="OCTAVO" disabled>
+               <input type="text" class="input-matricula" id="ciclo" value="<?=$_SESSION["ciclo"]?>" disabled>
             </div>
             <div class="col-xl-3 col-md-3">
                <label for="plan">Plan de Estudios</label><br>
-               <input type="text" class="input-matricula" id="plan" value="2018-F2" disabled>
+               <input type="text" class="input-matricula" id="plan" value="<?=$_SESSION["regimen"]?>" disabled>
             </div>
             <div class="col-xl-9 col-md-9">
                <label for="escuela">Escuela Profesional</label><br>
-               <input type="text" class="input-matricula" id="escuela" value="ESCUELA PROFESIONAL DE INGENIERÍA EN INFORMÁTICA Y SISTEMAS" disabled>
+               <input type="text" class="input-matricula" id="escuela" value="<?=$_SESSION["nombre_escuela"]?>" disabled>
             </div>
          </div><br>
 

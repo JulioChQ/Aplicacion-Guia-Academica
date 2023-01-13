@@ -6,8 +6,10 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Reporte de Matrícula</title>
-   <link rel="stylesheet" href="http://<?php echo $_SERVER["HTTP_HOST"]; ?>/view/estilo.css">
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+   <link rel='stylesheet' type="text/css" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/aplicacionguiaacademica/view/reports/reportes.css">
+
+   <link rel='stylesheet' type="text/css" href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+
 </head>
 
 <body>
@@ -16,52 +18,58 @@
    <div class="container">
       <div class="row">
          <div class="col text-center">
-            <h3 id="titulo">Simulación de Matrícula</h3>
+            <h2 id="titulo">Matrícula Simulada</h2>
 
          </div>
       </div>
       <div class="row">
-         <h5>Información Personal</h5>
-         <div class="col-xl-3 col-md-3">
+         <h3>Información Personal</h3>
+         <div class="col col-xs-3">
             <label for="codigo-alumno">Código de alumno</label><br>
             <input type="text" class="input-matricula" id="codigo-alumno" value="<?= $codigo ?>" disabled>
          </div>
-         <div class="col-xl-6 col-md-6">
+         <div class="col col-xs-6">
             <label for="nombre-apellido">Nombres y Apellidos</label><br>
             <input type="text" class="input-matricula" id="nombre-apellido" value="<?= $nombreCompleto ?>" disabled>
          </div>
-         <div class="col-xl-3 col-md-3">
+         <div class="col col-xs-2">
             <label for="ciclo">Ciclo</label><br>
             <input type="text" class="input-matricula" id="ciclo" value="<?= $ciclo ?>" disabled>
          </div>
-         <div class="col-xl-3 col-md-3">
+         <div class="col col-xs-1"><br></div>
+      </div>
+
+      <div class="row">
+         <div class="col col-xs-2">
             <label for="plan">Plan de Estudios</label><br>
             <input type="text" class="input-matricula" id="plan" value="<?= $planEstudios ?>" disabled>
          </div>
-         <div class="col-xl-9 col-md-9">
+         <div class="col col-xs-9">
             <label for="escuela">Escuela Profesional</label><br>
             <input type="text" class="input-matricula" id="escuela" value="<?= $nombreEscuela ?>" disabled>
          </div>
-      </div><br>
-
+         <div class="col col-xs-1"></div>
+      </div>
 
       <div class="row">
-         <h5>Información de Matrícula</h5>
-         <div class="col-xl-3 col-md-4">
+         <h3>Información de Matrícula</h3>
+         <div class="col col-xs-4">
             <label for="situacion">Situación de Estudiante</label><br>
             <input type="text" class="input-matricula" id="situacion" value="<?= $situacion ?>" readonly>
          </div>
-         <div class="col-xl-3 col-md-4">
+         <div class="col col-xs-4">
             <label for="creditos-selec">Creditos Totales</label><br>
             <input type="text" class="input-matricula" id="creditos-selec" value="<?= $creditosSeleccionados ?>" name="creditos-selec" readonly>
-         </div><br>
-         <div class="col-xl-3 col-md-4">
+         </div>
+         <div class="col col-xs-3">
             <label for="horas-total">Total de Horas</label><br>
             <input type="text" class="input-matricula" id="horas-total" value="<?= $totalHoras ?>" name="horas-total" readonly>
          </div><br>
-
-         <div class="table-responsive">
-            <table id="cursos" class="table table-hover">
+         <div class="col-xs-1"></div>
+      </div><br>
+      <div class="row">
+         <div class="">
+            <table id="cursos" class="table">
                <thead>
                   <tr>
                      <th>Nro.</th>
@@ -110,6 +118,11 @@
          </div>
       </div>
    </div>
+
+   <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+      <p class="text-muted">Fecha de generación: <?=date("H:i:s d/m/Y")?></p>
+      
+   </footer>
 </body>
 
 </html>

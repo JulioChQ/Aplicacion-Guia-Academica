@@ -55,17 +55,20 @@ class MatriculaController
       $html = ob_get_clean();
       //echo $html;
            
-
+      
       $dompdf = new Dompdf();
+      $dompdf->set_base_path("view/css/bootstrap.min.css");
+      $dompdf->set_base_path("view/reports/reportes.css");
 
       $options = $dompdf->getOptions();
       $options->set(array("isRemoteEnabled" => true));
       $dompdf->setOptions($options);
       $dompdf->loadHtml($html);
-      //$dompdf->setPaper('letter');
-      $dompdf->setPaper('A4');
+      $dompdf->setPaper('A4',"portrait");
       $dompdf->render();
-      $dompdf->stream("archivo_.pdf", array("Attachment" => false));
-
+      $codigo = $_SESSION["codigo"];
+      $dompdf->stream("simulacion_matricula_$codigo.pdf", array("Attachment" => false));
+      
+      
    }
 }
