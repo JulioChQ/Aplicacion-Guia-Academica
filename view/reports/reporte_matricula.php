@@ -5,7 +5,7 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Reporte de Matrícula</title>
+   <title>Reporte de Matrícula | Guía Académica</title>
    <link rel='stylesheet' type="text/css" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/aplicacionguiaacademica/view/reports/reportes.css">
 
    <link rel='stylesheet' type="text/css" href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
@@ -18,7 +18,7 @@
    <div class="container">
       <div class="row">
          <div class="col text-center">
-            <h2 id="titulo">Matrícula Simulada</h2>
+            <h2 id="titulo">Ficha de Matrícula Simulada</h2>
 
          </div>
       </div>
@@ -120,7 +120,7 @@
    </div>
 
    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-      <p class="text-muted">Fecha de generación: <?=date("H:i:s d/m/Y")?></p>
+      <p class="text-muted">Hora y fecha de generación: <?=date("H:i:s d/m/Y")?></p>
       
    </footer>
 </body>

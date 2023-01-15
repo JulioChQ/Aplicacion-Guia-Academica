@@ -23,6 +23,7 @@ class UsuarioController
             $_SESSION["ciclo"] = $user["ciclo"];
             $_SESSION["regimen"] = $user["regimen"];
             $_SESSION["nombre_escuela"] = $user["nombre_escuela"];
+            $_SESSION["abreviatura"] = $user["abreviatura"];
             header("location: index.php");
         } else {
 
@@ -45,29 +46,34 @@ class UsuarioController
             $fechaNacimiento = $_POST["fecha-nacimiento"];
             $contra1 = $_POST["contra1"];
             $contra2 = $_POST["contra2"];
+            $validacion =false;
 
             if ($contra1 != $contra2) {
                 echo '<script type="text/javascript">
                 alert("¡La contraseñas no coinciden!");
                 window.location.href="index.php?registro";
                 </script>';
+            }else{
+                $validacion = true;
             }
 
-            if (UsuarioController::$usuario->esUsuarioRegistrado($codigo)) {
+            if (UsuarioController::$usuario->esUsuarioRegistrado($codigo) && $validacion == true) {
                 echo '<script type="text/javascript">
                 alert("¡El usuario está registrado en el Sistema!");
                 window.location.href="index.php?registro";
                 </script>';
+                $validacion = false;
             }
 
-            if (strlen($contra2) < 5) {
+            if (strlen($contra2) < 5 && $validacion == true) {
                 echo '<script type="text/javascript">
                 alert("¡La contraseña no es válida!");
                 window.location.href="index.php?registro";
                 </script>';
+                $validacion = false;
             }
 
-            if (UsuarioController::$usuario->validarRegistro($codigo, $dni, $fechaNacimiento)) {
+            if (UsuarioController::$usuario->validarRegistro($codigo, $dni, $fechaNacimiento) && $validacion) {
                 UsuarioController::$usuario->registrarUsuario($codigo, $contra2);
                 echo '<script type="text/javascript">
                 alert("¡El usuario ha sido registrado exitosamente!");

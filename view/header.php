@@ -9,8 +9,10 @@ if (!isset($_GET["p"])) {
     switch ($_GET["p"]) {
         case "simulacion":
             $activo[2] = "active opcion-actual";
+            break;
         case "procesos":
             $activo[1] = "active opcion-actual";
+            break;
     }
 }
 ?>
@@ -22,18 +24,18 @@ if (!isset($_GET["p"])) {
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="navbar-collapse collapse" id="navbarToggler" style="">
-                <a class="navbar-brand" href="#">
-
+                <a class="navbar-brand" href="index.php">
+                    Guía Académica
                 </a>
                 <ul class="navbar-nav d-flex justify-content-center align-items-center">
                     <li class="nav-item">
-                        <a class="nav-link <?= $activo[0] ?>" href="index.php">Cursos</a>
+                        <a class="nav-link <?= $activo[0] ?>" href="index.php">Mis Asignaturas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?= $activo[1] ?>" href="index.php?p=procesos">Procesos Académicos</a>
+                        <a class="nav-link <?= $activo[1] ?>" href="index.php?p=procesos">Información de Interés</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?= $activo[2] ?>" href="index.php?p=simulacion">Simulación</a>
+                        <a class="nav-link <?= $activo[2] ?>" href="index.php?p=simulacion">Simulación de Matrícula</a>
                     </li>
 
                     <li class="nav-item">

@@ -29,8 +29,8 @@ class CursoController
                </script>';
       }
 
-      $codigoUsuario = $_SESSION["codigo"];
-      $cursos = CursoController::$curso_modelo->getListaCursosXUsuario($codigoUsuario);
+      $idUsuario = $_SESSION["id"];
+      $cursos = CursoController::$curso_modelo->getListaCursosXUsuario($idUsuario);
       require_once "view/cursos.php";
    }
 
@@ -41,6 +41,7 @@ class CursoController
 
       $curso = CursoController::$curso_modelo->getCursoXId($_GET["curso"]);
       $prerrequisitos = CursoController::$curso_modelo->getPrerrequisitosXId($_GET["curso"]);
+      $cursoSucesor = CursoController::$curso_modelo->getCursoSucesorXId($_GET["curso"]);
       require_once "view/curso-detallado.php";
    }
 }

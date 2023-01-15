@@ -38,9 +38,11 @@ if (!isset($_SESSION["codigo"])) {
                         MatriculaController::generarReporteMatricula();
                     }
                     break;
+
                 case "procesos":
                     require_once "view/procesos.php";
                     break;
+
                 default:
                     header("index.php");
             }

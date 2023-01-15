@@ -5,7 +5,7 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title><?=$curso[0]["nombre"]?> | Cursos | Sistema de Guía Académica |</title>
+   <title><?= $curso[0]["nombre"] ?> | Asignaturas | Guía Académica</title>
    <link rel="stylesheet" href="view/estilo.css">
 
 
@@ -23,11 +23,11 @@
       <div class="container">
          <div class="row">
 
-            <h1>
+            <h2>
                <?php
                echo "Semestre " . $curso[0]["ciclo"];
                ?>
-            </h1>
+            </h2>
          </div>
          <div class="row">
 
@@ -38,30 +38,53 @@
             </h2>
          </div><br>
 
+         
          <div class="row">
-            <h4>PRE REQUISITOS </h4>
-            <?php
-            if(!empty($prerrequisitos)){
-               foreach($prerrequisitos as $row ){
-            ?>
-            <li>
-            <a href="index.php?curso=<?=$row["id"]?>"><?=$row["nombre"]?></a>
-            </li>
-                  
-            <?php
-               }
-            }else{
-               echo "No tiene";
-            }
-            ?>
-            <br><br>
-            
+         <h3>Asignaturas Relacionadas</h3>
+            <div class="col-sm-6">
+               <h5>Prerrequisitos</h5>
+               <?php
+               if (!empty($prerrequisitos)) {
+                  foreach ($prerrequisitos as $row) {
+               ?>
+                     <li>
+                        <a href="index.php?curso=<?= $row["id"] ?>"><?= $row["nombre"] ?></a>
+                     </li>
 
-            <h4>PROPÓSITO U OBJETIVO</h4>
+               <?php
+                  }
+               } else {
+                  echo "No tiene";
+               }
+               ?>
+
+            </div>
+            <div class="col-sm-6">
+               <h5>Asignaturas Dependientes</h5>
+               <?php
+               if (!empty($cursoSucesor)) {
+                  foreach ($cursoSucesor as $row) {
+               ?>
+                     <li>
+                        <a href="index.php?curso=<?= $row["id"] ?>"><?= $row["nombre"] ?></a>
+                     </li>
+
+               <?php
+                  }
+               } else {
+                  echo "No tiene";
+               }
+               ?>
+
+            </div>
+            
+         </div><br>
+         <div class="row">
+            <h3>Propósito u Objetivo</h3>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, consequatur accusantium obcaecati
             porro magni eaque eveniet esse! Error ut vel facilis amet numquam itaque quae quos dolores, nobis
             adipisci voluptate. Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi soluta exercitationem ab harum magnam. Voluptates, eaque blanditiis. Molestias fugiat ut, earum itaque ea repellendus, asperiores dignissimos dolore veritatis quae laborum. <br><br>
-            <h4>CONTENIDO</h4>
+            <h3>Contenido</h3>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, consequatur accusantium obcaecati
             porro magni eaque eveniet esse! Error ut vel facilis amet numquam itaque quae quos dolores, nobis
             adipisci voluptate. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos doloribus quos dicta, maiores fugit hic, distinctio quis alias aperiam voluptatibus dolorem. Nisi eius deserunt libero recusandae necessitatibus molestiae blanditiis animi. <br><br>
@@ -71,7 +94,7 @@
 
          <div class="row">
             <div class="col">
-               <h4>HORAS Y CRÉDITOS</h4>
+               <h3>Horas y Créditos</h3>
                <div class="table-responsive">
                   <table class="table table-striped">
                      <tr>
@@ -87,7 +110,7 @@
                         <td><?php echo $curso[0]["horas_laboratorio"]; ?></td>
                      </tr>
                      <tr>
-                        <td><b>Total de horas</b></td>
+                        <td><b>Total de Horas</b></td>
                         <td><?php echo $curso[0]["horas_total"]; ?></td>
                      </tr>
                      <tr>
@@ -99,14 +122,27 @@
             </div>
 
             <div class="col">
-               <h4>INFORMACIÓN ADICIONAL</h4>
+               <h3>Información Adicional</h3>
                <div class="table-responsive">
                   <table class="table table-striped">
                      <tr>
-                        <td><b>Código de curso</b></td>
-                        <td>1234</td>
+                        <td><b>Código de Asignatura</b></td>
+                        <td><?=$curso[0]["id_asignatura"]?></td>
                      </tr>
-                     
+                     <tr>
+                        <td><b>Número de Electivo</b></td>
+                        <td>
+                           <?php
+                           if ($curso[0]["electivo"] == 0){
+                              echo "No es electivo";
+                           }else{
+                              echo $curso[0]["electivo"];
+                           }
+                           ?>
+                           
+                        </td>
+                     </tr>
+
                   </table>
                </div>
             </div>
@@ -116,7 +152,7 @@
    </section>
 
    <?php
-   require_once "view/footer.php"; 
+   require_once "view/footer.php";
    ?>
 </body>
 

@@ -20,7 +20,7 @@
       <div class="container">
          <form action="index.php?datos-personales" method="post">
             <div class="row">
-               <h1>Mis Datos personales</h1>
+               <h2>Mis Datos personales</h2>
             </div>
 
             <div class="row">

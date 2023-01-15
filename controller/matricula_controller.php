@@ -16,8 +16,8 @@ class MatriculaController
    static public function verSimulacionMatricula()
    {
       MatriculaController::inicializar();
-      $codigo = $_SESSION["codigo"];
-      $listaCursos = MatriculaController::$matriculaModelo->getListaCursosXUsuarioDetallado($codigo);
+      $idUsuario = $_SESSION["id"];
+      $listaCursos = MatriculaController::$matriculaModelo->getListaCursosXUsuarioDetallado($idUsuario);
       require_once "view/simulacion-matricula.php";
    }
 
@@ -45,6 +45,7 @@ class MatriculaController
             $contador++;
          }
       }
+
       
       //var_dump($asignaturas);
 

@@ -14,14 +14,20 @@ class Curso{
    public function getListaCursosXUsuario($idUsuario){
       $sql = "SELECT asignatura.id_asignatura, asignatura.nombre, 
       asignatura.horas_teoria + asignatura.horas_laboratorio/2 + asignatura.horas_practica/2 as creditos, 
-      asignatura.ciclo, asignatura.electivo, situacion_asignatura.estado, count(t.id_asignatura1) as prerrequisitos
+      asignatura.ciclo, asignatura.electivo, situacion_asignatura.estado, count(pre1.id_asignatura1) as prerrequisitos, count(pre2.id_asignatura0) as prerrequisitos1
       FROM ((asignatura INNER JOIN curricula ON asignatura.id_curricula = curricula.id_curricula) 
       INNER JOIN usuario ON usuario.id_curricula = curricula.id_curricula)  
       LEFT JOIN situacion_asignatura ON 
       (usuario.id_usuario = situacion_asignatura.id_usuario AND asignatura.id_asignatura = situacion_asignatura.id_asignatura)
-      LEFT JOIN (SELECT t1.id_asignatura1 FROM prerrequisito t1 JOIN situacion_asignatura t2 ON t1.id_asignatura0 = t2.id_asignatura WHERE t2.estado != 1 OR t2.estado IS NULL) as t 
-      ON asignatura.id_asignatura = t.id_asignatura1
-      WHERE usuario.codigo = '$idUsuario'
+      LEFT JOIN (SELECT t1.id_asignatura1 FROM prerrequisito t1 
+		JOIN situacion_asignatura t2 ON t1.id_asignatura0 = t2.id_asignatura
+		WHERE t2.estado != 1 AND t2.id_usuario = $idUsuario ) as pre1
+      ON asignatura.id_asignatura = pre1.id_asignatura1
+      LEFT JOIN (SELECT t1.id_asignatura0 FROM prerrequisito t1 
+		JOIN situacion_asignatura t2 ON t1.id_asignatura1 = t2.id_asignatura
+		WHERE t2.estado = 1 AND t2.id_usuario = $idUsuario ) as pre2 
+      ON asignatura.id_asignatura = pre2.id_asignatura0
+      WHERE usuario.id_usuario = '$idUsuario'
       GROUP BY 1,2,3,4,5,6;";
       $resultado = $this->db->query($sql);
       $cursos = $resultado->fetch_all(MYSQLI_ASSOC);
@@ -46,20 +52,29 @@ class Curso{
       return $cursos;
    }
 
+   public function getCursoSucesorXId($idCurso){
+      $sql = "SELECT a.id_asignatura AS id, a.nombre AS nombre FROM (asignatura a INNER JOIN prerrequisito ON a.id_asignatura=prerrequisito.id_asignatura1) 
+      JOIN asignatura b ON prerrequisito.id_asignatura0=b.id_asignatura
+      WHERE b.id_asignatura = '$idCurso'";
+      $resultado = $this->db->query($sql);
+      $cursos = $resultado->fetch_all(MYSQLI_ASSOC);
+      return $cursos;
+   }
+
    public function guardarSituacionCurso($idAsignaturas, $estados)
    {
       // MODIFICAR LA CONSULTA
       //var_dump($idAsignaturas);
       $idUsuario = $_SESSION["id"];
-      var_dump($_SESSION);
-      $cursos_actual = $this->getListaCursosXUsuario($_SESSION["codigo"]);
+      //var_dump($_SESSION);
+      $cursos_actual = $this->getListaCursosXUsuario($_SESSION["id"]);
 
       for ($i = 0; $i < count($idAsignaturas); $i++) {
          $estado = $estados[$i];
          $idAsignatura = $idAsignaturas[$i];
          if ($estado != $cursos_actual[$i]["estado"]) {
             $sql = "UPDATE situacion_asignatura SET estado = $estado WHERE (id_usuario = $idUsuario) and (id_asignatura = $idAsignatura);";
-            var_dump($sql);
+            //var_dump($sql);
             $resultado = $this->db->query($sql);
             //var_dump($resultado);
          }
