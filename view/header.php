@@ -13,6 +13,9 @@ if (!isset($_GET["p"])) {
         case "procesos":
             $activo[1] = "active opcion-actual";
             break;
+        case "reportes":
+            $activo[3] = "active opcion-actual";
+            break;
     }
 }
 ?>
@@ -36,6 +39,9 @@ if (!isset($_GET["p"])) {
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?= $activo[2] ?>" href="index.php?p=simulacion">Simulación de Matrícula</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?= $activo[3] ?>" href="index.php?p=reportes">Reportes</a>
                     </li>
 
                     <li class="nav-item">

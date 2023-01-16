@@ -20,22 +20,37 @@
       <div class="container-lg">
          <div class="row">
             <div class="col">
-               <h2>Procesos Académicos</h2>
+               <br>
+               <h2>Información de Interés</h2><br>
             </div>
-
          </div>
 
          <div class="row">
-            <p>A continuación se mostrarán todos los enlaces a los documentos de intéres relacionados con los procesos Académicos de la universidad</p>
+            
          </div>
+         <div class="row">
+            <div class="col-sm-6">
+               <h3>Misión</h3>
+               <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos quidem, sit eos porro facilis, at illum doloremque harum assumenda dolore sed voluptates. Ab consequatur deleniti beatae aspernatur modi? Minima, repellat! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Recusandae, quae porro quisquam autem odio ipsum dolores facere expedita quasi accusamus ad a odit, esse est animi aliquam impedit aspernatur minus.</p>
+            </div>
+            <div class="col-sm-6">
+               <h3>Visión</h3>
+               <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos quidem, sit eos porro facilis, at illum doloremque harum assumenda dolore sed voluptates. Ab consequatur deleniti beatae aspernatur modi? Minima, repellat! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Recusandae, quae porro quisquam autem odio ipsum dolores facere expedita quasi accusamus ad a odit, esse est animi aliquam impedit aspernatur minus.</p>
+            </div>
+         </div><br><br>
+         <div class="row">
+            <div></div>
+         </div>
+         
 
          <div class="row">
-            <h3>Este es el título de la sección</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi harum eos aut, corrupti ea quaerat recusandae. Temporibus quam tempora dolores ex quod voluptatibus itaque repudiandae exercitationem, eius placeat? Natus, aut! Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, dignissimos vitae saepe sequi consequatur aliquid odio quidem maiores voluptates vel? Pariatur nihil officiis, culpa enim vero nisi facilis iste deleniti. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci quaerat rerum laudantium labore ducimus, tempore consectetur aperiam, voluptatem, aliquam possimus quis beatae ratione deserunt dolor quos aliquid sint nesciunt! Facere! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt mollitia maxime, accusantium quo, atque amet ex magni ullam temporibus labore debitis officiis provident minus quos consequuntur magnam vitae nisi aliquid? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae facilis perspiciatis cumque, iste incidunt commodi dolore. Assumenda eos ad fugit ipsam aliquid nulla corrupti! Vitae dolores earum cum eaque cumque?
-            Doloribus, quidem voluptatum sint earum non esse libero ipsum possimus magnam perferendis! Nesciunt impedit nisi corrupti ullam tempora. Totam odit voluptatem nobis nulla nesciunt dolores molestias velit corrupti voluptate similique.
-            Beatae aspernatur quod odit, nulla magni libero adipisci aliquid harum repellat dolores nobis voluptas laudantium. Quis fugit explicabo est facere, adipisci, quas velit fugiat quaerat saepe dolorum quam sapiente reiciendis.
-            Quod maiores dignissimos officiis! Ut ullam repellat alias? Quisquam dolore rem sit. Sunt praesentium debitis quas quasi excepturi reprehenderit a accusantium aperiam nulla dolor natus, fuga, omnis odio culpa suscipit.
-            Non quia quibusdam tempore ipsa laudantium, fuga dolorum provident vel, modi, tenetur facilis consectetur assumenda ab eum nihil quos natus fugiat similique iusto! Cum, deserunt unde perferendis qui saepe eaque.</p>
+            <h3>Enlaces de Interés</h3>
+            <ul>
+               <li><a href="http://unjbg.edu.pe/portal/#" target="_blank">Portal de la Universidad</a></li>
+               <li><a href="http://www.dasa.unjbg.edu.pe/" target="_blank">DASA</a></li>
+               <li><a href="http://www.unjbg.edu.pe/pdf/CalendarioAcademico2022Actualizado.pdf" target="_blank">Calendario Académico 2022</a></li>
+               <li><a href="http://unjbg.edu.pe/pdf/20201030-PagosBancoDeLaNacion.pdf" target="_blank" rel="noopener noreferrer">Códigos de Pago</a></li>
+            </ul>
          </div>
 
       </div>

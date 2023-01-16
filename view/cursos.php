@@ -23,7 +23,7 @@
       <div class="container-lg">
          <div class="row">
             <div class="col">
-               <h2>Mis Asignaturas</h2>
+               <h2><br>Mis Asignaturas</h2>
             </div>
          </div>
          <p>A continuación se muestran las asignaturas correspondientes a su Plan de Estudios(<?= $_SESSION["abreviatura"] . " " . $_SESSION["regimen"] ?>).</p>

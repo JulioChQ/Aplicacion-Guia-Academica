@@ -132,11 +132,11 @@ function actualizarEstadoCursos() {
                document.getElementsByClassName("estado-aux")[i].value = "si";
                document.getElementsByClassName("curso-estado")[i].setAttribute("disabled", "");
                for (var j = 0; j < cantidadCursos; j++) {
-                  var numeroMatricula2 = document.getElementsByClassName("nro-matricula")[j].value;
-                  if (numeroMatricula2 == "1") {
-                     document.getElementsByClassName("curso-estado")[j].removeAttribute("checked", "");
-                     document.getElementsByClassName("estado-aux")[i].value = "no";
-                     document.getElementsByClassName("curso-estado")[j].setAttribute("disabled", "");
+                  var numeroMatricula2 = Number(document.getElementsByClassName("nro-matricula")[j].value);
+                  if (numeroMatricula2 == 1) {
+                     document.getElementsByClassName("curso-estado")[j].removeAttribute("checked", "true");
+                     document.getElementsByClassName("estado-aux")[j].value = "no";
+                     document.getElementsByClassName("curso-estado")[j].setAttribute("disabled", "true");
                   }
                }
             }
@@ -145,10 +145,11 @@ function actualizarEstadoCursos() {
       }
 
    }
+   var estado;
    if (contadorCuartaMat == 0) {
       existeCuartaMat = false;
       for (var i = 0; i < cantidadCursos; i++) {
-         numeroMatricula = document.getElementsByClassName("nro-matricula")[i].value;
+         numeroMatricula = Number(document.getElementsByClassName("nro-matricula")[i].value);
          estado = document.getElementsByClassName("curso-estado")[i].disabled;
          if (numeroMatricula == 1 && estado == true) {
             document.getElementsByClassName("curso-estado")[i].removeAttribute("checked", "");
@@ -159,8 +160,4 @@ function actualizarEstadoCursos() {
 
    }
    modificarCreditosSeleccionados();
-}
-
-function validarMatricula() {
-
 }

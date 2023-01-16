@@ -46,14 +46,14 @@ class UsuarioController
             $fechaNacimiento = $_POST["fecha-nacimiento"];
             $contra1 = $_POST["contra1"];
             $contra2 = $_POST["contra2"];
-            $validacion =false;
+            $validacion = false;
 
             if ($contra1 != $contra2) {
                 echo '<script type="text/javascript">
                 alert("¡La contraseñas no coinciden!");
                 window.location.href="index.php?registro";
                 </script>';
-            }else{
+            } else {
                 $validacion = true;
             }
 
@@ -93,6 +93,7 @@ class UsuarioController
     static public function datosPersonales()
     {
         UsuarioController::$usuario = new Usuario();
+        $validacion = false;
         if (isset($_POST["actualizar-datos"])) {
             if (strlen($_POST["contra-actual"]) != 0 || strlen($_POST["contra-nueva"]) != 0 || strlen($_POST["contra-nueva2"]) != 0) {
                 if (!UsuarioController::$usuario->validarUsuario($_SESSION["codigo"], $_POST["contra-actual"])) {
@@ -100,25 +101,29 @@ class UsuarioController
                 alert("¡La contraseña es incorrecta!");
                 window.location.href="index.php?datos-personales";
                 </script>';
+                } else {
+                    $validacion = true;
                 }
 
-                if ($_POST["contra-nueva"] != $_POST["contra-nueva2"]) {
+                if ($_POST["contra-nueva"] != $_POST["contra-nueva2"] && $validacion) {
                     echo '<script type="text/javascript">
                 alert("¡La contraseñas no coinciden!");
                 window.location.href="index.php?datos-personales";
                 </script>';
+                    $validacion = false;
                 }
 
-                if (strlen($_POST["contra-nueva2"]) <= 5) {
+                if (strlen($_POST["contra-nueva2"]) <= 5 && $validacion) {
                     echo '<script type="text/javascript">
                 alert("¡La Nueva Contraseña no es Válida!");
                 window.location.href="index.php?datos-personales";
                 </script>';
-                }else{
-                    UsuarioController::$usuario->actualizarDatos($_POST["ciclo"], $_POST["contra-nueva2"], true);
+                    $validacion = false;
+                } else {
+                    if($validacion){
+                        UsuarioController::$usuario->actualizarDatos($_POST["ciclo"], $_POST["contra-nueva2"], true);
+                    } 
                 }
-
-                
             } else {
                 UsuarioController::$usuario->actualizarDatos($_POST["ciclo"], $_POST["contra-nueva2"], false);
             }

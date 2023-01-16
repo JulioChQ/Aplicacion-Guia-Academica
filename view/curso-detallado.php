@@ -22,10 +22,10 @@
    <section>
       <div class="container">
          <div class="row">
-
+            
             <h2>
                <?php
-               echo "Semestre " . $curso[0]["ciclo"];
+               echo "<br>Semestre " . $curso[0]["ciclo"];
                ?>
             </h2>
          </div>

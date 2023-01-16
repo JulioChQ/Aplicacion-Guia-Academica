@@ -76,7 +76,7 @@
       <nav class="navbar navbar-expand-md navbar-light">
          <div class="container-fluid">
             <div class="col-12">
-                  <h4>Guía Académica</h4>
+                  <br><h4>Guía Académica</h4>
                
             </div>
 

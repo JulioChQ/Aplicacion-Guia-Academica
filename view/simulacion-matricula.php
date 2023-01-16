@@ -29,7 +29,7 @@
       <div class="container">
          <div class="row">
             <div class="col">
-               <h3 id="titulo">Simulación de Matrícula</h3>
+               <br><h3 id="titulo">Simulación de Matrícula</h3>
                <p>
                   Aquí puedes simular la generación de una ficha de matrícula.
                </p>

@@ -6,7 +6,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta name="description" content="">
    <title>Registro | Guía Académica</title>
-   
+
 
    <!-- Favicons -->
    <meta name="theme-color" content="#712cf9">
@@ -73,16 +73,18 @@
 </head>
 
 <body class="text-center">
-   <header>
-      <nav class="navbar navbar-light">
-         <div class="container-fluid text-center">
-            <h2 class="text-center">Aplicación de Guía Académica</h2>
+   <header class="">
+      <nav class="navbar navbar-expand-md navbar-light">
+         <div class="container-fluid">
+            <div class="col-12">
+               <br><h4>Guía Académica</h4>
+            </div>
          </div>
       </nav>
    </header>
 
    <main class="form-signin w-100 m-auto">
-      <form action="<?php echo $_SERVER["PHP_SELF"]; ?>?registro" method="POST">
+      <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST">
          <h1 class="h3 mb-3 fw-normal">Registro de Usuario</h1>
 
          <div class="form-floating">

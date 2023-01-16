@@ -42,7 +42,10 @@ if (!isset($_SESSION["codigo"])) {
                 case "procesos":
                     require_once "view/procesos.php";
                     break;
-
+                
+                case "reportes":
+                    require_once "view/generar-reportes.php";
+                    break;
                 default:
                     header("index.php");
             }
